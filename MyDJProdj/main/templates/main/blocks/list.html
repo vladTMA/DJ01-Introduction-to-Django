@@ -1,0 +1,15 @@
+<div class="list-block">
+    <h2>{{ title }}</h2>
+
+    {% if items %}
+        <ul>
+            {% for item in items %}
+                <li>
+                    <a href="{{ item.get_absolute_url }}">{{ item }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Пока нет данных.</p>
+    {% endif %}
+</div>

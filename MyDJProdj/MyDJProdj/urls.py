@@ -1,3 +1,4 @@
+# urls.py
 """
 URL configuration for MyDJProdj project.
 
@@ -23,9 +24,6 @@ import main.views as views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('main.urls')),
-    path('neo/', views.neo),
-    path("about/", views.about, name="about"),
-    path("contacts/", views.contacts, name="contacts"),
 ]
 
 

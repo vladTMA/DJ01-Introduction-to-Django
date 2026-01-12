@@ -1,0 +1,30 @@
+<!---article_list.html--->
+{% extends "base.html" %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Блог</h1>
+
+{% if articles %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for article in articles %}
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <p class="card-text text-muted">
+                    {{ article.created_at|date:"d.m.Y H:i" }}
+                </p>
+                <a href="{{ article.get_absolute_url }}" class="btn btn-primary">
+                    Читать
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>Пока нет статей.</p>
+{% endif %}
+{% endblock %}
