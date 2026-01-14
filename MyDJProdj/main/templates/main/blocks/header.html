@@ -1,12 +1,23 @@
-<nav>
-    <a href="/">Главная</a>
-    <a href="/neo/">NEO</a>
-    <a href="/about/">О проекте</a>
-    <a href="/contacts/">Контакты</a>
+<!---blocks/header.html--->
+<nav class="navbar navbar-expand-lg" style="background: #3b5d7a;">
+    <div class="container">
+        <a class="navbar-brand text-light" href="/">MyDJProdj</a>
+
+        <div class="navbar-nav">
+            <a class="nav-link text-light" href="{% url 'index' %}">Главная</a>
+            <a class="nav-link text-light" href="{% url 'neo' %}">NEO</a>
+            <a class="nav-link text-light" href="{% url 'about' %}">О проекте</a>
+            <a class="nav-link text-light" href="{% url 'contacts' %}">Контакты</a>
+            <a class="nav-link text-light" href="{% url 'news' %}">Страница новостей</a>
+        </div>
+    </div>
 </nav>
 
-<a href="/articles/" class="{% if '/articles/' in request.path %}active{% endif %}">
-    Блог
-</a>
+
+
+
+
+
+
 
 

@@ -1,0 +1,23 @@
+<!---news/templates/news/detail.html--->
+{% extends "base.html" %}
+
+{% block title %}{{ item.title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h1>{{ item.title }}</h1>
+
+    <p class="text-muted">
+        Автор: {{ item.author.get_full_name|default:item.author.username }} |
+        {{ item.created_at|date:"d.m.Y H:i" }}
+    </p>
+
+    <hr>
+
+    <p>{{ item.content|linebreaks }}</p>
+
+    <a href="{% url 'news' %}" class="btn btn-secondary mt-3">← Назад к новостям</a>
+
+</div>
+{% endblock %}

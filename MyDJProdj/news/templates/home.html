@@ -1,17 +1,13 @@
-<!--main/index.html-->
-{{% extends "base.html" %}
+<!---news/templates/news/home.html--->
+{% extends "base.html" %}
 
-{% block title %}Главная{% endblock %}
+{% block title %}Новости{% endblock %}
 
 {% block content %}
-<h1>Мой первый проект на Django</h1>
-<p>Добро пожаловать!</p>
+<h1 class="mb-4">Все новости</h1>
 
-<h2 class="mb-4 mt-5">Последние новости</h2>
-
-{% if latest_news %}
 <div class="row">
-    {% for item in latest_news %}
+    {% for item in news %}
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
                 <div class="card-body">
@@ -30,11 +26,9 @@
                 </div>
             </div>
         </div>
+    {% empty %}
+        <p>Новостей пока нет.</p>
     {% endfor %}
 </div>
-{% else %}
-    <p>Новостей пока нет.</p>
-{% endif %}
 
 {% endblock %}
-

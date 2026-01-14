@@ -1,4 +1,4 @@
-# urls.py
+# MyDJProdj/urls.py
 """
 URL configuration for MyDJProdj project.
 
@@ -24,6 +24,7 @@ import main.views as views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('main.urls')),
+    path ('news/', include('news.urls')),
 ]
 
 
