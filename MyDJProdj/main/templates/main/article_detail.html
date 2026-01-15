@@ -1,20 +1,17 @@
-<!---article_detail.html--->
+<!---main/templates/main/article_detail.html--->
 {% extends "base.html" %}
-
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}{{ item.title }}{% endblock %}
 
 {% block content %}
-<div class="card shadow-sm p-4">
-    <h1>{{ article.title }}</h1>
+<h1>{{ item.title }}</h1>
+<p class="text-muted">
+    {{ item.author }} | {{ item.created_at|date:"d.m.Y H:i" }}
+</p>
 
-    <p class="text-muted">
-        {{ article.created_at|date:"d.m.Y H:i" }}
-    </p>
+<hr>
 
-    <p class="mt-3">{{ article.body }}</p>
+<p>{{ item.content|linebreaks }}</p>
 
-    <a href="{% url 'article_list' %}" class="btn btn-secondary mt-3">
-        ← Назад к списку
-    </a>
-</div>
+<a href="{% url 'articles' %}" class="btn btn-secondary mt-3">← Назад</a>
 {% endblock %}
+

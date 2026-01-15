@@ -23,8 +23,12 @@ def article_list(request):
     return render(request, "main/article_list.html", {"articles": articles})
 
 def article_detail(request, pk):
-    article = get_object_or_404(Article, pk=pk)
-    return render(request, "main/article_detail.html", {"article": article})
+    item = get_object_or_404(Article, pk=pk)
+    return render(request, "main/article_detail.html", {"item": item})
+
+def articles(request):
+    items = Article.objects.filter(is_published=True).order_by("-created_at")
+    return render(request, "main/articles.html", {"items": items})
 
 def home(request):
     return render(request, "main/home.html")
