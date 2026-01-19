@@ -1,8 +1,7 @@
----
-
 # 🇬🇧 English README Version
 
-```markdown
+---
+
 # MyDJProdj — Django Learning Project
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge)
@@ -10,6 +9,8 @@
 ![HTML](https://img.shields.io/badge/HTML-templates-orange?style=for-the-badge)
 ![CSS](https://img.shields.io/badge/CSS-basic-blue?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Project-active-brightgreen?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Educational-yellow?style=for-the-badge)
+
 
 A training Django project created while learning the framework.  
 Includes a news system, NEO code‑viewer page, navigation, templates, and admin customization.
