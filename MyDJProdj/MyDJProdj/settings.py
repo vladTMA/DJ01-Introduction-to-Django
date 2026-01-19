@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-=vdi^*ogwrqbwmy8$u8#_&dw#zfoqtm1)313re0!)0953jqui%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -100,6 +100,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -122,3 +125,11 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+
+
+
+
+
+

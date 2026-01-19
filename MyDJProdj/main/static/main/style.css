@@ -38,6 +38,32 @@ nav a.active {
     padding-bottom: 2px;
 }
 
+.card {
+    height: 100%;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-text {
+    flex-grow: 1;
+}
+
+.form-buttons {
+    margin-top: auto;
+}
+
+.book-img {
+    height: 220px;          /* одинаковая высота */
+    object-fit: cover;      /* обрезка без искажений */
+    width: 100%;            /* растягиваем по ширине */
+}
+
+
+
+
 
 
 

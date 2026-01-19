@@ -1,0 +1,12 @@
+<!---main/templates/article_preview.html--->
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Предпросмотр статьи</h2>
+
+<h3>{{ article.title }}</h3>
+<h5 class="text-muted">{{ article.subtitle }}</h5>
+<p>{{ article.content }}</p>
+
+<a href="javascript:history.back()" class="btn btn-secondary">Назад к редактированию</a>
+{% endblock %}
