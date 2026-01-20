@@ -16,7 +16,7 @@
 
 | Home | News | Books | Detail |
 |------|------|-------|--------|
-| ![](static/screenshots/homedj.png) | ![](static/screenshots/news.png) | ![](static/screenshots/books.png) | ![](static/screenshots/detail.png) |
+| ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/detail.png) |
                         
 
 ---

@@ -21,7 +21,7 @@ Includes a news system, NEO code‑viewer page, navigation, templates, and admin
 
 | Home | News | Books | Detail |
 |------|------|-------|--------|
-| ![](static/screenshots/homedj.png) | ![](static/screenshots/news.png) | ![](static/screenshots/books.png) | ![](static/screenshots/detail.png) |
+| ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/detail.png) |
 
 
 ---
