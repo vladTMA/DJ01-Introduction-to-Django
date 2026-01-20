@@ -14,9 +14,10 @@
 
 ## 📸 Скриншоты
 
-| Home | News | Books | Detail |
-|------|------|-------|--------|
-| ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/detail.png) |
+| Home | News | Books | Neo |
+|------|------|-------|-----|
+| ![](MyDJProdj/screenshots/homedj.png) | ![](MyDJProdj/screenshots/news.png) | ![](MyDJProdj/screenshots/books.png) | ![](MyDJProdj/screenshots/neo.png) |
+
                         
 
 ---

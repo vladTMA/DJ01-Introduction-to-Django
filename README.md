@@ -5,22 +5,20 @@
 
 ## 🌐 Documentation / Документация
 
-- 🇷🇺 **Русская версия** → [READMEru.md](READMEru.md)
-- 🇬🇧 **English version** → [READMEen.md](READMEen.md)
+- 🇷🇺 **Русская версия** → [READMEru.md](MyDJProdj/READMEru.md)
+- 🇬🇧 **English version** → [READMEen.md](MyDJProdj/READMEen.md)
 
 ---
 
 ## 📸 Screenshots
-
-| Home | News | Books | Detail |
-|------|------|-------|--------|
-| ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/detail.png) |
+| Home | News | Books | Neo |
+|------|------|-------|-----|
+| ![](MyDJProdj/screenshots/homedj.png) | ![](MyDJProdj/screenshots/news.png) | ![](MyDJProdj/screenshots/books.png) | ![](MyDJProdj/screenshots/neo.png) |
 
 ---
 
 ## 🧱 Project Structure
 
-```
 MyDJProdj/
 │
 ├── main/
@@ -41,7 +39,9 @@ MyDJProdj/
 ├── READMEen.md
 ├── requirements.txt
 └── manage.py
-```
+
+Код
+
 ---
 
 ## 🚀 Features
@@ -60,11 +60,12 @@ pip install -r requirements.txt
 python manage.py  migrate
 python manage.py  runserver
 
+Код
+
 ---
 
 ## 📄 License
 
 MIT License
 
----
 
