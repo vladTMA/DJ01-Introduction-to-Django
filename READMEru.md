@@ -13,10 +13,11 @@
 ---
 
 ## 📸 Скриншоты
-| Home | News | Books | Detail                          |
-|------|------|-------|---------------------------------|
-| ![](static/screenshots/homedj.png) | ![](static/screenshots/news.png) | ![](static/screenshots/books.png) | ![](static/screenshots/nto.png) |
-                          
+
+| Home | News | Books | Detail |
+|------|------|-------|--------|
+| ![](static/screenshots/homedj.png) | ![](static/screenshots/news.png) | ![](static/screenshots/books.png) | ![](static/screenshots/detail.png) |
+                        
 
 ---
 
@@ -35,8 +36,14 @@
 - «Читать далее»
 - Автоматическое назначение автора
 
+### Книги
+- `/books/` — список книг
+- `/books/<id>/` — детальная страница книги
+- Обложки, описание, отзыв
+- Карточки с кнопкой «Подробнее» 
+
 ### Админка
-- Карточки новостей
+- Кастомизированный список новостей
 - Поиск, фильтры, сортировка
 - Отображение slug
 - Служебные поля в collapsible‑блоках
@@ -49,32 +56,75 @@
 MyDJProdj/
 │
 ├── main/
+│   ├── migrations/
+│   ├── static/
+│   │   └── main/
+│   │       └── style.css
+│   │
 │   ├── templates/
 │   │   ├── base.html
-│   │   ├── index.html
-│   │   ├── neo.html
-│   │   ├── about.html
-│   │   └── contacts.html
+│   │   └── main/
+│   │       ├── about.html
+│   │       ├── add_book.html
+│   │       ├── article_delete_confirm.html
+│   │       ├── article_form.html
+│   │       ├── article_list.html
+│   │       ├── article_preview.html
+│   │       ├── articles.html
+│   │       ├── book_detail.html
+│   │       ├── book_list.html
+│   │       ├── contacts.html
+│   │       ├── index.html
+│   │       └── neo.html
+│   │
+│   ├── blocks/
+│   │   ├── detail.html
+│   │   ├── footer.html
+│   │   ├── header.html
+│   │   └── list.html
+│   │
+│   ├── admin.py
+│   ├── apps.py
 │   ├── models.py
-│   ├── views.py
 │   ├── urls.py
-│   └── admin.py
+│   └── views.py
 │
 ├── news/
-│   ├── templates/news/
-│   │   ├── home.html
-│   │   ├── detail.html
-│   │   └── ...
+│   ├── migrations/
+│   ├── admin/
+│   │   └── news/
+│   │       └── change_list.html
+│   │
+│   ├── templates/
+│   │   └── news/
+│   │       ├── detail.html
+│   │       ├── home.html
+│   │       └── news.html
+│   │
+│   ├── admin.py
+│   ├── apps.py
 │   ├── models.py
-│   ├── views.py
 │   ├── urls.py
-│   └── admin.py
+│   └── views.py
 │
+├── media/
+│   └── books/
+│
+├── screenshots/
+│   ├── homedj.png
+│   ├── news.png
+│   ├── books.png
+│   └── neo.png
+│
+├── .env
+├── env.example
+├── requirements.txt
 ├── run_django.bat
 ├── stop_django.bat
 ├── manage.py
 └── venv/
 
+```
 ---
 
 ## ▶️ Запуск проекта
@@ -85,9 +135,11 @@ MyDJProdj/
 
 ```
 run_django.bat
+
 ```
 
-Он автоматически:
+
+Скрипт автоматически:
 
 - переходит в папку проекта  
 - активирует виртуальное окружение  
@@ -109,13 +161,14 @@ python manage.py runserver
 
 ```
 stop_django.bat
+
 ```
 
 Скрипт:
 
-- определяет процессы Django
+- находит процессы Django
 - завершает их
-- показывает статус
+- выводит статус
 - работает в кодировке UTF‑8
 
 ---
@@ -126,7 +179,7 @@ stop_django.bat
 - Python 3.x  
 - Django 5.2
 - Bootstrap 5
-- Prism.js  (подсветка кода)                                
+- Prism.js (подсветка кода)                                
 - HTML + CSS 
 
 ---
@@ -136,9 +189,9 @@ stop_django.bat
 - Пагинация новостей
 - Категории
 - Изображения к новостям
-- Добавить категории новостей
-- Сделать форму обратной связи
-- Улучшить дизайн админки
+- Категории новостей
+- Форма обратной связи
+- Улучшение дизайна админки
 
 ---
 

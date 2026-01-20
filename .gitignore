@@ -3,7 +3,7 @@
 # Python
 # ============================
 __pycache__/
-*.py[cod]
+*.pyc
 *$py.class
 
 # ============================
@@ -13,8 +13,12 @@ __pycache__/
 venv/
 env/
 ENV/
-env.bak/
-venv.bak/
+
+# ============================
+# Environment variables
+# ============================
+.env
+.env.*
 
 # ============================
 # Django
@@ -25,24 +29,20 @@ db.sqlite3-journal
 local_settings.py
 
 # ============================
-# Static & media (если появятся)
+# Static & media (runtime)
 # ============================
 staticfiles/
 media/
 
 # ============================
-# IDE / Editor
+# IDE / Editors
 # ============================
 .idea/
 .vscode/
-*.iml
 
 # ============================
-# Bytecode / cache
+# Caches
 # ============================
-*.pyc
-*.pyo
-*.pyd
 .pytest_cache/
 .mypy_cache/
 .dmypy.json
@@ -54,22 +54,6 @@ media/
 *.egg-info/
 dist/
 build/
-.eggs/
-
-# ============================
-# Jupyter
-# ============================
-.ipynb_checkpoints/
-
-# ============================
-# Tools
-# ============================
-.ruff_cache/
-.pdm.toml
-.pdm-python
-.pdm-build/
-.cursorignore
-.cursorindexingignore
 
 # ============================
 # OS files

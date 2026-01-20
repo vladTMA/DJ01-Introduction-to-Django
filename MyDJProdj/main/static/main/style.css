@@ -56,10 +56,20 @@ nav a.active {
 }
 
 .book-img {
-    height: 220px;          /* одинаковая высота */
-    object-fit: cover;      /* обрезка без искажений */
-    width: 100%;            /* растягиваем по ширине */
+    width: 100%;
+    height: 220px;
+    object-fit: contain;      /* масштабирует картинку внутрь блока */
+    background: #fff;         /* чтобы не было серых полос */
+    padding: 5px;             /* создаёт аккуратный воздух */
 }
+
+.card-img-top {
+    padding: 6px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
 
 
 

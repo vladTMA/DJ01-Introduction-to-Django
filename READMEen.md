@@ -19,9 +19,9 @@ Includes a news system, NEO code‑viewer page, navigation, templates, and admin
 
 ## 📸 Screenshots
 
-| Home | News | Books | Detail                          |
-|------|------|-------|---------------------------------|
-| ![](static/screenshots/homedj.png) | ![](static/screenshots/news.png) | ![](static/screenshots/books.png) | ![](static/screenshots/neo.png) |
+| Home | News | Books | Detail |
+|------|------|-------|--------|
+| ![](static/screenshots/homedj.png) | ![](static/screenshots/news.png) | ![](static/screenshots/books.png) | ![](static/screenshots/detail.png) |
 
 
 ---
@@ -41,6 +41,12 @@ Includes a news system, NEO code‑viewer page, navigation, templates, and admin
 - “Read more”
 - Auto‑assigned author
 
+### Books
+- `/books/` — list of books
+- `/books/<id>/` — detailed book page
+- Covers, description, reviews
+- Cards with a "Learn more" button
+
 ### Admin panel
 - Custom card layout
 - Search, filters, sorting
@@ -55,26 +61,74 @@ Includes a news system, NEO code‑viewer page, navigation, templates, and admin
 MyDJProdj/
 │
 ├── main/
+│   ├── migrations/
+│   ├── static/
+│   │   └── main/
+│   │       └── style.css
+│   │
 │   ├── templates/
+│   │   ├── base.html
+│   │   └── main/
+│   │       ├── about.html
+│   │       ├── add_book.html
+│   │       ├── article_delete_confirm.html
+│   │       ├── article_form.html
+│   │       ├── article_list.html
+│   │       ├── article_preview.html
+│   │       ├── articles.html
+│   │       ├── book_detail.html
+│   │       ├── book_list.html
+│   │       ├── contacts.html
+│   │       ├── index.html
+│   │       └── neo.html
+│   │
+│   ├── blocks/
+│   │   ├── detail.html
+│   │   ├── footer.html
+│   │   ├── header.html
+│   │   └── list.html
+│   │
+│   ├── admin.py
+│   ├── apps.py
 │   ├── models.py
-│   ├── views.py
 │   ├── urls.py
-│   └── admin.py
+│   └── views.py
 │
 ├── news/
-│   ├── templates/news/
+│   ├── migrations/
+│   ├── admin/
+│   │   └── news/
+│   │       └── change_list.html
+│   │
+│   ├── templates/
+│   │   └── news/
+│   │       ├── detail.html
+│   │       ├── home.html
+│   │       └── news.html
+│   │
+│   ├── admin.py
+│   ├── apps.py
 │   ├── models.py
-│   ├── views.py
 │   ├── urls.py
-│   └── admin.py
+│   └── views.py
 │
 ├── media/
 │   └── books/
 │
+├── screenshots/
+│   ├── homedj.png
+│   ├── news.png
+│   ├── books.png
+│   └── neo.png
+│
+├── .env
+├── env.example
+├── requirements.txt
 ├── run_django.bat
 ├── stop_django.bat
 ├── manage.py
 └── venv/
+
 ```
 ---
 
@@ -89,7 +143,6 @@ run_django.bat
 cd MyDJProdj
 venv\Scripts\activate
 python manage.py runserver
-
 
 ---
 
