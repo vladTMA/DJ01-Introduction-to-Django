@@ -17,6 +17,7 @@
 
 ---
 
+```text
 ## 🧱 Project Structure
 
 MyDJProdj/
@@ -39,6 +40,7 @@ MyDJProdj/
 ├── READMEen.md
 ├── requirements.txt
 └── manage.py
+```
 
 Код
 
