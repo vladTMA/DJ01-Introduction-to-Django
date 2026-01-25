@@ -21,7 +21,7 @@
 ### Custom registration & Adin panel
 | Custom Registration                            | Custom Admin (Backup DB) |
 |------------------------------------------------|--------------------------|
-| ![](MyDJProdj/screenshots/castom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
+| ![](screenshots/castom_register.png) | ![](screenshots/custom_admin_backup.png) |
                         
 
 ---
@@ -71,7 +71,7 @@
 
 Полная структура проекта вынесена в отдельный файл:
 
-➡️ [ARCHITECTURE.md](ARCHITECTURE.md)
+➡️ [ARCHITECTURE.md](../ARCHITECTURE.md)
 ---
 
 ## ▶️ Запуск проекта

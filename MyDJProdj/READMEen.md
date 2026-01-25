@@ -24,7 +24,7 @@ A learning‑oriented Django project featuring a news system, book catalog, NEO 
 ### Custom registration & Adin panel
 | Custom Registration                            | Custom Admin (Backup DB) |
 |------------------------------------------------|--------------------------|
-| ![](MyDJProdj/screenshots/castom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
+| ![](screenshots/castom_register.png) | ![](screenshots/custom_admin_backup.png) |
 ---
 
 ## 🚀 Features
@@ -71,7 +71,7 @@ A learning‑oriented Django project featuring a news system, book catalog, NEO 
 
 The full project structure is available in a separate file:
 
-➡️ ARCHITECTURE.md
+➡️ [ARCHITECTURE.md](../ARCHITECTURE.md)
 
 ---
 
