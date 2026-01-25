@@ -8,7 +8,7 @@
 ![License](https://img.shields.io/badge/License-Educational-yellow?style=for-the-badge)
 
 Учебный проект, созданный в процессе изучения Django.  
-Содержит систему новостей, страницу NEO с подсветкой кода, навигацию, шаблоны и кастомизацию админки.
+Содержит систему новостей, каталог книг, страницу NEO с подсветкой кода, кастомную регистрацию пользователей и полностью переработанную админ‑панель с расширенным функционалом.
 
 ---
 
@@ -18,6 +18,10 @@
 |------|------|-------|-----|
 | ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/neo.png) |
 
+### Custom registration & Adin panel
+| Custom Registration | Custom Admin (Backup DB) |
+|---------------------|--------------------------|
+| ![](MyDJProdj/screenshots/custom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
                         
 
 ---
@@ -26,9 +30,22 @@
 
 ### Основные страницы
 - `/` — главная
-- `/neo/` — страница с подсветкой кода (Prism.js + тёмная тема)
 - `/about/` — о проекте
+- `/books/` — книги
 - `/contacts/` — контакты
+- `/news/` — новости
+- `/neo/` — страница с подсветкой кода (Prism.js + тёмная тема)
+- `/register/` — кастомная регистрация
+
+### Админка
+- Полностью кастомный BackupAdminSite
+- Кнопка резервного копирования базы данных
+- Блок статистики на главной странице
+- Переопределённые шаблоны
+- Кастомизированный список новостей
+- Поиск, фильтры, сортировка
+- Отображение slug
+- Служебные поля в collapsible‑блоках
 
 ### Новости
 - `/news/` — список новостей
@@ -43,92 +60,18 @@
 - Обложки, описание, отзыв
 - Карточки с кнопкой «Подробнее» 
 
-### Админка
-- Кастомизированный список новостей
-- Поиск, фильтры, сортировка
-- Отображение slug
-- Служебные поля в collapsible‑блоках
+### Пользователи
+- Кастомная регистрация
+- Кастомная форма
+- Расширенная валидация
 
 ---
 
 ## 📂 Структура проекта
 
-```text
-MyDJProdj/
-│
-├── main/
-│   ├── migrations/
-│   ├── static/
-│   │   └── main/
-│   │       └── style.css
-│   │
-│   ├── templates/
-│   │   ├── base.html
-│   │   └── main/
-│   │       ├── about.html
-│   │       ├── add_book.html
-│   │       ├── article_delete_confirm.html
-│   │       ├── article_form.html
-│   │       ├── article_list.html
-│   │       ├── article_preview.html
-│   │       ├── articles.html
-│   │       ├── book_detail.html
-│   │       ├── book_list.html
-│   │       ├── contacts.html
-│   │       ├── index.html
-│   │       └── neo.html
-│   │
-│   ├── blocks/
-│   │   ├── detail.html
-│   │   ├── footer.html
-│   │   ├── header.html
-│   │   └── list.html
-│   │
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-│
-├── news/
-│   ├── migrations/
-│   ├── admin/
-│   │   └── news/
-│   │       └── change_list.html
-│   │
-│   ├── templates/
-│   │   └── news/
-│   │       ├── detail.html
-│   │       ├── home.html
-│   │       └── news.html
-│   │
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── urls.py
-│   └── views.py
-│
-├── media/
-│   └── books/
-│
-├── screenshots/
-│   ├── homedj.png
-│   ├── news.png
-│   ├── books.png
-│   └── neo.png
-│
-├── .env
-├── env.example
-├── requirements.txt
-├── run_django.bat
-├── stop_django.bat
-├── manage.py
-└── venv/
+Полная структура проекта вынесена в отдельный файл:
 
-```
+➡️ [ARCHITECTURE.md](ARCHITECTURE.md)
 ---
 
 ## ▶️ Запуск проекта
@@ -139,10 +82,7 @@ MyDJProdj/
 
 ```
 run_django.bat
-
 ```
-
-
 Скрипт автоматически:
 
 - переходит в папку проекта  
@@ -202,5 +142,6 @@ stop_django.bat
 ## 📄 Лицензия
 
 Проект создан в учебных целях.
+MIT лицензия
 
 ```

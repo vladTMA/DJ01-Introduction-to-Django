@@ -12,8 +12,7 @@
 ![License](https://img.shields.io/badge/License-Educational-yellow?style=for-the-badge)
 
 
-A training Django project created while learning the framework.  
-Includes a news system, NEO code‑viewer page, navigation, templates, and admin customization.
+A learning‑oriented Django project featuring a news system, book catalog, NEO code viewer, custom user registration, and a fully customized admin panel with extended functionality.
 
 ---
 
@@ -22,16 +21,30 @@ Includes a news system, NEO code‑viewer page, navigation, templates, and admin
 |------|------|-------|-----|
 | ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/neo.png) |
 
-
+### Custom registration & Adin panel
+| Custom Registration | Custom Admin (Backup DB) |
+|---------------------|--------------------------|
+| ![](MyDJProdj/screenshots/custom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
 ---
 
 ## 🚀 Features
 
 ### Main pages
 - `/` — Home
-- `/neo/` — Code viewer (Prism.js + dark theme)
 - `/about/` — About
+- `/books/` —  List of books
 - `/contacts/` — Contacts
+- `/news/` — List of news
+- `/neo/` — Code viewer (Prism.js + dark theme)
+- `/register/` — Custom registration
+
+### Admin panel
+- Fully custom BackupAdminSite
+- One‑click database backup
+- Statistics block on the admin homepage
+- Overridden Django admin templates
+- Search, filters, sorting
+- Collapsible service fields
 
 ### News
 - `/news/` — All news
@@ -46,112 +59,56 @@ Includes a news system, NEO code‑viewer page, navigation, templates, and admin
 - Covers, description, reviews
 - Cards with a "Learn more" button
 
-### Admin panel
-- Custom card layout
-- Search, filters, sorting
-- Slug display
-- Collapsible service fields
+### User system
+
+- Custom user registration
+- Custom form and validation
+- Extended authentication flow
 
 ---
 
 ## 📂 Project structure
 
-```text
-MyDJProdj/
-│
-├── main/
-│   ├── migrations/
-│   ├── static/
-│   │   └── main/
-│   │       └── style.css
-│   │
-│   ├── templates/
-│   │   ├── base.html
-│   │   └── main/
-│   │       ├── about.html
-│   │       ├── add_book.html
-│   │       ├── article_delete_confirm.html
-│   │       ├── article_form.html
-│   │       ├── article_list.html
-│   │       ├── article_preview.html
-│   │       ├── articles.html
-│   │       ├── book_detail.html
-│   │       ├── book_list.html
-│   │       ├── contacts.html
-│   │       ├── index.html
-│   │       └── neo.html
-│   │
-│   ├── blocks/
-│   │   ├── detail.html
-│   │   ├── footer.html
-│   │   ├── header.html
-│   │   └── list.html
-│   │
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-│
-├── news/
-│   ├── migrations/
-│   ├── admin/
-│   │   └── news/
-│   │       └── change_list.html
-│   │
-│   ├── templates/
-│   │   └── news/
-│   │       ├── detail.html
-│   │       ├── home.html
-│   │       └── news.html
-│   │
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py
-│   ├── urls.py
-│   └── views.py
-│
-├── media/
-│   └── books/
-│
-├── screenshots/
-│   ├── homedj.png
-│   ├── news.png
-│   ├── books.png
-│   └── neo.png
-│
-├── .env
-├── env.example
-├── requirements.txt
-├── run_django.bat
-├── stop_django.bat
-├── manage.py
-└── venv/
+The full project structure is available in a separate file:
 
-```
+➡️ ARCHITECTURE.md
+
 ---
 
 ### ▶️ Running the project
 
 ## 1. Using the script
 
+```
 run_django.bat
+```
+The script automatically:
 
-## 2. Manually
+- navigates to the project directory
+- activates the virtual environment
+- starts the development server
 
+## 2. Running manually
+
+```
 cd MyDJProdj
 venv\Scripts\activate
 python manage.py runserver
+```
 
 ---
 
 ### ⏹ Stopping the server
 
+```
 stop_django.bat
+```
+The script:
 
+- finds Django processes
+- terminates them
+- prints status
+- works in UTF‑8
 ---
 
 ### 🛠 Technologies
@@ -170,11 +127,13 @@ HTML + CSS
 - News categories
 - Images for news
 - Contact form
+- Improved admin UI
 
 ---
 
 ### 📄 License                                
 
+MIT License
 Educational use only.
 
 ---

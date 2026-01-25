@@ -1,7 +1,7 @@
 # MyDJProdj — Django Project
 
 Добро пожаловать в мой учебный Django‑проект.  
-Здесь реализованы новости, книги, статьи, загрузка изображений и аккуратный UI на Bootstrap.
+Здесь реализованы новости, книги, статьи, загрузка изображений, кастомная регистрация пользователей и полностью переработанная админ‑панель с расширенным функционалом.
 
 ## 🌐 Documentation / Документация
 
@@ -15,59 +15,47 @@
 |------|------|-------|-----|
 | ![](MyDJProdj/screenshots/homedj.png) | ![](MyDJProdj/screenshots/news.png) | ![](MyDJProdj/screenshots/books.png) | ![](MyDJProdj/screenshots/neo.png) |
 
+### Custom registration & Adin panel
+| Custom Registration | Custom Admin (Backup DB) |
+|---------------------|--------------------------|
+| ![](MyDJProdj/screenshots/custom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
+
 ---
 
-```text
 ## 🧱 Project Structure
 
-MyDJProdj/
-│
-├── main/
-│   ├── templates/
-│   ├── static/
-│   ├── models.py
-│   ├── views.py
-│   └── urls.py
-│
-├── screenshots/
-│   homedj.png
-│   news.png
-│   books.png
-│   detail.png
-│
-├── README.md
-├── READMEru.md
-├── READMEen.md
-├── requirements.txt
-└── manage.py
-```
+Полная структура проекта вынесена в отдельный файл:
 
-Код
+➡️ [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ---
-
 ## 🚀 Features
 
-- Новости, книги, статьи  
-- Загрузка изображений  
-- Адаптивный интерфейс на Bootstrap  
-- Работа с `.env`  
-- Чистая структура проекта  
+- Новости, книги, статьи
+- Загрузка изображений
+- Кастомная регистрация пользователя
+- Кастомная админ‑панель (BackupAdminSite)
+- Кнопка резервного копирования базы данных
+- Блок статистики на главной странице админки
+- Переопределённые шаблоны Django Admin
+- Адаптивный интерфейс на Bootstrap
+- Работа с .env
+- Чистая и расширяемая архитектура проекта
 
 ---
 
 ## ⚙️ Installation
 
+``` bash
 pip install -r requirements.txt
-python manage.py  migrate
-python manage.py  runserver
+python manage.py migrate
+python manage.py runserver
 
-Код
-
+```
 ---
 
 ## 📄 License
 
 MIT License
 
-
+---
