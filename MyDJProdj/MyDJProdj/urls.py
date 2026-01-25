@@ -1,4 +1,4 @@
-# MyDJProdj/urls.py
+# MyDJProdj/MyDJProdj/urls.py
 """
 URL configuration for MyDJProdj project.
 
@@ -16,17 +16,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-from django.contrib import admin
-from django.urls import path, include
-import main.views as views
 
+from django.urls import path, include
+import main.admin
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path('', include('main.urls')),
-    path ('news/', include('news.urls')),
+    path("admin/", main.admin.admin_site.urls),
+    path("", include("main.urls")),
+    path("news/", include("news.urls")),
 ]
-
-
-
-

@@ -2,12 +2,21 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
 from . import views
-from .views import add_book, book_list
+from .views import add_book, book_list, RegisterView, CustomLoginView
 
 
 urlpatterns = [
+    
     path('', views.index, name="index"),
+
+    # Аутентификация
+    path("register/", RegisterView.as_view(), name="register"),
+    path("login/", CustomLoginView.as_view(), name="login"),
+    path("logout/", LogoutView.as_view(next_page="index"), name="logout"),
+
+    # Остальные маршруты
     path('neo/', views.neo, name="neo"),
     path('about/', views.about, name="about"),
     path('contacts/', views.contacts, name="contacts"),

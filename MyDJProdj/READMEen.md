@@ -87,9 +87,12 @@ MyDJProdj/
 │   │   ├── header.html
 │   │   └── list.html
 │   │
+│   ├── __init__.py
 │   ├── admin.py
 │   ├── apps.py
+│   ├── forms.py
 │   ├── models.py
+│   ├── tests.py
 │   ├── urls.py
 │   └── views.py
 │

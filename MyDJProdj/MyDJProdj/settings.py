@@ -26,23 +26,28 @@ load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG", "True").lower() == "true"
+
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+
+
+AUTH_USER_MODEL = "main.CustomUser"
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "main",
+    "main.apps.MainConfig",
     "news",
+    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -112,19 +117,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LANGUAGE_CODE = "ru"
 
-from dotenv import load_dotenv
-import os
-from datetime import datetime
-import pytz
-
-moscow_tz = pytz.timezone("Europe/Moscow")
-
-def to_moscow(ts):
-    return datetime.fromtimestamp(ts, tz=moscow_tz).strftime("%d.%m.%Y %H:%M")
-
 load_dotenv()
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Moscow"
 
 USE_I18N = True
 
@@ -140,6 +135,12 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"
+
 
 
 

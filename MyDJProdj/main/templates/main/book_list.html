@@ -3,19 +3,22 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2 class="mb-4">Список книг</h2>
+<div class="container mt-0" style="padding-top: 0;">
+    <h2 class="mb-1 mt-0">Список книг</h2>
 
     <div class="row">
         {% for book in books %}
-        <div class="col-md-4 mb-4 d-flex">
+        <div class="col-md-4 mb-2">
             <div class="card h-100 shadow-sm">
 
-                {% if book.image %}
-                    <img src="{{ book.image.url }}" class="card-img-top book-img" alt="{{ book.title }}">
-                {% else %}
-                    <img src="{% static 'main/no-cover.png' %}" class="card-img-top book-img" alt="Нет обложки">
-                {% endif %}
+
+                <div style="height: 220px; background: #f8f9fa; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    {% if book.image %}
+                        <img src="{{ book.image.url }}" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="{{ book.title }}">
+                    {% else %}
+                        <img src="{% static 'main/no-cover.png' %}" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="Нет обложки">
+                    {% endif %}
+                </div>
 
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ book.title }}</h5>
