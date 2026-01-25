@@ -22,9 +22,9 @@ A learning‑oriented Django project featuring a news system, book catalog, NEO 
 | ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/neo.png) |
 
 ### Custom registration & Adin panel
-| Custom Registration | Custom Admin (Backup DB) |
-|---------------------|--------------------------|
-| ![](MyDJProdj/screenshots/custom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
+| Custom Registration                            | Custom Admin (Backup DB) |
+|------------------------------------------------|--------------------------|
+| ![](MyDJProdj/screenshots/castom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
 ---
 
 ## 🚀 Features

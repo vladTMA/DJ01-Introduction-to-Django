@@ -16,9 +16,9 @@
 | ![](MyDJProdj/screenshots/homedj.png) | ![](MyDJProdj/screenshots/news.png) | ![](MyDJProdj/screenshots/books.png) | ![](MyDJProdj/screenshots/neo.png) |
 
 ### Custom registration & Adin panel
-| Custom Registration | Custom Admin (Backup DB) |
-|---------------------|--------------------------|
-| ![](MyDJProdj/screenshots/custom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
+| Custom Registration                            | Custom Admin (Backup DB) |
+|------------------------------------------------|--------------------------|
+| ![](MyDJProdj/screenshots/castom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
 
 ---
 
