@@ -1,3 +1,4 @@
+# MyDJProdj/MyDJProdj/settings_local.py
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

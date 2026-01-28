@@ -12,7 +12,7 @@
 ![License](https://img.shields.io/badge/License-Educational-yellow?style=for-the-badge)
 
 
-A learning‑oriented Django project featuring a news system, book catalog, NEO code viewer, custom user registration, and a fully customized admin panel with extended functionality.
+An educational Django project featuring news, books, articles, image uploads, custom user registration, an extended admin panel, a weather module, and full integration with a Telegram bot via a secure REST API.
 
 ---
 
@@ -37,6 +37,7 @@ A learning‑oriented Django project featuring a news system, book catalog, NEO 
 - `/news/` — List of news
 - `/neo/` — Code viewer (Prism.js + dark theme)
 - `/register/` — Custom registration
+- `/weather/` — Weather page (OpenWeatherMap API)
 
 ### Admin panel
 - Fully custom BackupAdminSite
@@ -44,6 +45,7 @@ A learning‑oriented Django project featuring a news system, book catalog, NEO 
 - Statistics block on the admin homepage
 - Overridden Django admin templates
 - Search, filters, sorting
+- Slug display
 - Collapsible service fields
 
 ### News
@@ -59,12 +61,136 @@ A learning‑oriented Django project featuring a news system, book catalog, NEO 
 - Covers, description, reviews
 - Cards with a "Learn more" button
 
-### User system
+### Users 
 
 - Custom user registration
 - Custom form and validation
 - Extended authentication flow
 
+### 🌤 Weather Page
+
+The Weather module provides:
+
+- weather search by city name
+- temperature, humidity, wind speed, dew point
+- Bootstrap‑based UI
+- error handling for invalid cities
+- integration with the Telegram bot
+
+---
+
+## 🤖 Telegram Bot Integration
+
+The project includes full two‑way integration between Django and a Telegram bot.
+
+### 🔗 REST API for the Bot
+
+The bot communicates with Django via a secure API:
+
+- POST /api/v1/register/ — register a Telegram user
+- GET /api/v1/user/<telegram_id>/ — get user profile
+
+All requests require a security header: 
+
+```
+X-BOT-SECRET: <secret key>
+
+```
+
+### 👤 TelegramUser Model
+
+Stores:
+
+Telegram ID
+
+- username, first name, last name
+- language code
+- registration date
+- last activity
+- subscription status
+- geolocation (latitude, longitude)
+
+### 🤖 Bot Features
+
+- /start — registration + profile output
+- /myinfo — fetch profile from Django
+- /weather — weather in Pskov
+- /weather <city> — weather by city name
+- automatic weather notifications (morning & evening)
+- inline buttons:
+    - Weather in Pskov
+    - Choose city
+    - Help
+    - Stop notifications
+
+### 🛡 Security
+
+- API access is protected with a secret key (X-BOT-SECRET)
+- The serializer exposes only safe, controlled fields
+- The Django admin panel provides full control over Telegram users
+- All bot–server communication uses JSON over HTTPS (recommended for production)
+- No anonymous access to bot endpoints
+
+## 📡 API Reference
+
+### POST /api/v1/register/
+
+Registers a Telegram user.
+
+#### Request example
+
+```
+{
+  "telegram_id": 123456,
+  "username": "vivaldy",
+  "first_name": "Vladimir",
+  "last_name": "Trofimov",
+  "language_code": "en",
+  "latitude": null,
+  "longitude": null
+}
+```
+#### Response example
+
+```
+{
+  "status": "ok",
+  "created": true,
+  "user": {
+    "telegram_id": 123456,
+    "username": "vivaldy",
+    "first_name": "Vladimir",
+    "last_name": "Trofimov",
+    "language_code": "en",
+    "registered_at": "...",
+    "last_activity": "...",
+    "is_subscribed": true
+  }
+}
+```
+---
+
+## GET /api/v1/user/<telegram_id>/
+
+Returns a Telegram user profile.
+
+### Response example
+
+```
+{
+  "status": "ok",
+  "user": {
+    "telegram_id": 123456,
+    "username": "vivaldy",
+    "first_name": "Vladimir",
+    "last_name": "Trofimov",
+    "language_code": "en",
+    "registered_at": "...",
+    "last_activity": "...",
+    "is_subscribed": true
+  }
+}
+```
 ---
 
 ## 📂 Project structure
@@ -88,7 +214,7 @@ The script automatically:
 - activates the virtual environment
 - starts the development server
 
-## 2. Running manually
+## 2. Manual run
 
 ```
 cd MyDJProdj
@@ -109,6 +235,10 @@ The script:
 - terminates them
 - prints status
 - works in UTF‑8
+---
+
+The run_all.bat and stop_all.bat scripts are displayed on the neo page.
+
 ---
 
 ### 🛠 Technologies

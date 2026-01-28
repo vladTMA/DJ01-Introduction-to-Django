@@ -1,0 +1,140 @@
+<!-- weather/templates/weather/weather.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+
+    <h1 class="mb-4">Погода</h1>
+
+    <!-- Форма поиска -->
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-auto">
+            <input type="text" name="city" class="form-control"
+                   placeholder="Введите город" value="{{ city }}">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Поиск</button>
+        </div>
+    </form>
+
+    <!-- Избранные города -->
+    {% if favorites %}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5>Избранные города</h5>
+            {% for c in favorites %}
+                <a href="?city={{ c }}" class="btn btn-outline-secondary btn-sm me-2">
+                    <i class="bi bi-geo-alt"></i> {{ c }}
+                </a>
+                <a href="{% url 'remove_favorite_city' c %}" class="text-danger ms-1">
+                    <i class="bi bi-x-circle"></i>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Ошибка -->
+    {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <!-- Карточка погоды -->
+    {% if city and not error %}
+    <div class="card mb-4">
+        <div class="card-body">
+
+            <h3 class="mb-3">
+                {{ city }}
+                <img src="https://openweathermap.org/img/wn/{{ icon }}@2x.png" alt="">
+            </h3>
+
+            <p class="lead">
+                {{ temp }}°C
+                <span class="text-muted">({{ description }})</span>
+            </p>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <p>Минимум: {{ temp_min }}°C</p>
+                    <p>Максимум: {{ temp_max }}°C</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Влажность: {{ humidity }}%</p>
+                    <p>Ветер: {{ wind }} м/с</p>
+                </div>
+                <div class="col-md-4">
+                    <p>Координаты: {{ context_lat }}, {{ context_lon }}</p>
+                    {% if elevation %}
+                        <p>Высота над уровнем моря: {{ elevation|floatformat:0 }} м</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Время -->
+    {% load tz %}
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>Местное время</h5>
+            {% timezone sunrise_local.tzinfo %}
+                <p>Восход: {{ sunrise_local|date:"d.m.Y H:i" }}</p>
+                <p>Закат: {{ sunset_local|date:"d.m.Y H:i" }}</p>
+            {% endtimezone %}
+            <p>Продолжительность дня: {{ day_length }}</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>По Москве</h5>
+            {% timezone "Europe/Moscow" %}
+                <p>Восход: {% timezone "Europe/Moscow" %}{{ sunrise_moscow|date:"d.m.Y H:i" }}{% endtimezone %}</p>
+                <p>Закат: {% timezone "Europe/Moscow" %}{{ sunset_moscow|date:"d.m.Y H:i" }}{% endtimezone %}</p>
+            {% endtimezone %}
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h5>UTC</h5>
+            {% timezone "UTC" %}
+                <p>Восход: {% timezone "UTC" %}{{ sunrise_utc|date:"d.m.Y H:i" }}{% endtimezone %}</p>
+                <p>Закат: {% timezone "UTC" %}{{ sunset_utc|date:"d.m.Y H:i" }}{% endtimezone %}</p>
+            {% endtimezone %}
+        </div>
+    </div>
+
+</div>
+
+    <!-- 📍 Интерактивная карта -->
+    <div id="map" style="height: 400px;" class="mt-4"></div>
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        const lat = parseFloat("{{ lat }}");
+        const lon = parseFloat("{{ lon }}");
+
+        const map = L.map("map").setView([lat, lon], 10);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: '&copy; OpenStreetMap contributors',
+            }).addTo(map);
+
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup("{{ city }}")
+            .openPopup();
+    </script>{% endif %}
+ </div>
+{% endblock %}

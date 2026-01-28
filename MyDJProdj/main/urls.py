@@ -1,14 +1,16 @@
 # main/urls.py
-from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.contrib.auth.views import LogoutView
+from django.urls import path, include
 from . import views
-from .views import add_book, book_list, RegisterView, CustomLoginView
+from .views import RegisterView, CustomLoginView
 
 
 urlpatterns = [
-    
+
+    # Главная
     path('', views.index, name="index"),
 
     # Аутентификация
@@ -16,7 +18,7 @@ urlpatterns = [
     path("login/", CustomLoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(next_page="index"), name="logout"),
 
-    # Остальные маршруты
+    # Информационные страницы
     path('neo/', views.neo, name="neo"),
     path('about/', views.about, name="about"),
     path('contacts/', views.contacts, name="contacts"),
@@ -29,12 +31,19 @@ urlpatterns = [
     path("articles/<slug:slug>/delete/", views.delete_article, name="delete_article"),
 
     # Книги
-    path("books/add/", add_book, name="add_book"),
-    path("books/", book_list, name="book_list"),
+    path("books/add/", views.add_book, name="add_book"),
+    path("books/", views.book_list, name="book_list"),
     path("books/<int:pk>/", views.book_detail, name="book_detail"),
+
+    # Погода
+    path("weather/", include("weather.urls")),
+
+    # Админка
+    path('admin/', admin.site.urls),
+
+    # API Telegram‑бота
+    path('api/v1/', include('bot.urls')),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-

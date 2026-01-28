@@ -2,6 +2,8 @@
 {% extends "admin/index.html" %}
 
 {% block content %}
+
+    <!-- Блок: Управление базой данных -->
     <div class="card" style="padding: 20px; margin-bottom: 20px;">
         <h2>Управление базой данных</h2>
         <a href="{% url 'backup_admin:backup-db' %}" class="button btn btn-primary">
@@ -9,32 +11,36 @@
         </a>
     </div>
 
+    <!-- Блок: Статистика проекта -->
     <div class="card" style="padding: 20px; margin-bottom: 20px;">
-    <h2>Статистика проекта</h2>
+        <h2>Статистика проекта</h2>
 
-    <div style="display: flex; gap: 20px; margin-top: 15px;">
+        <div style="display: flex; gap: 20px; margin-top: 15px;">
 
-        <div class="card" style="padding: 15px; width: 180px; text-align: center;">
-            <h3>Статьи</h3>
-            <p style="font-size: 24px; font-weight: bold;">{{ stats.articles }}</p>
+            <div class="card" style="padding: 15px; width: 180px; text-align: center;">
+                <h3>Статьи</h3>
+                <p style="font-size: 24px; font-weight: bold;">{{ stats.articles }}</p>
+            </div>
+
+            <div class="card" style="padding: 15px; width: 180px; text-align: center;">
+                <h3>Книги</h3>
+                <p style="font-size: 24px; font-weight: bold;">{{ stats.books }}</p>
+            </div>
+
+            <div class="card" style="padding: 15px; width: 180px; text-align: center;">
+                <h3>Новости</h3>
+                <p style="font-size: 24px; font-weight: bold;">{{ stats.news }}</p>
+            </div>
+
+            <div class="card" style="padding: 15px; width: 180px; text-align: center;">
+                <h3>Пользователи</h3>
+                <p style="font-size: 24px; font-weight: bold;">{{ stats.users }}</p>
+            </div>
+
         </div>
-
-        <div class="card" style="padding: 15px; width: 180px; text-align: center;">
-            <h3>Книги</h3>
-            <p style="font-size: 24px; font-weight: bold;">{{ stats.books }}</p>
-        </div>
-
-        <div class="card" style="padding: 15px; width: 180px; text-align: center;">
-            <h3>Новости</h3>
-            <p style="font-size: 24px; font-weight: bold;">{{ stats.news }}</p>
-        </div>
-
-        <div class="card" style="padding: 15px; width: 180px; text-align: center;">
-            <h3>Пользователи</h3>
-            <p style="font-size: 24px; font-weight: bold;">{{ stats.users }}</p>
-        </div>
-
     </div>
-</div>
+
+    <!-- Стандартный вывод Django Admin -->
     {{ block.super }}
+
 {% endblock %}

@@ -1,8 +1,7 @@
-# main/apps.py
 from django.apps import AppConfig
 
 
-class MainConfig(AppConfig):
+class BotConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "main"
-
+    name = "bot"
+    verbose_name = "Telegram Bot"

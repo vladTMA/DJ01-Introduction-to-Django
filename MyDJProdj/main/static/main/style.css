@@ -70,6 +70,12 @@ nav a.active {
     box-shadow: 0 0 4px rgba(0,0,0,0.1);
 }
 
+#map {
+    height: 400px;
+    border-radius: 8px;
+}
+
+
 
 
 

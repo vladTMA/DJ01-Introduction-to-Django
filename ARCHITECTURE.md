@@ -7,10 +7,23 @@
 ```text
 MyDJProdj/
 ├── ARCHITECTURE.md
-├── README.md
+├── bot_main.py
 ├── LICENSE
+└── README.md
     │
-    ├── backups/
+    ├── MyDJProdj/
+    │   ├── backups/
+    │   ├── migrations/    
+    │   ├── bot/   
+    │   ├── __init__.py                     
+    │   ├── admin.py
+    │   ├── apps.py                 
+    │   ├── models.py
+    │   ├── serializers.py
+    │   ├── tests.py
+    │   ├── urls.py
+    │   └── views.py)                        
+    │       
     ├── main/
     │   └── management/
     │           └── commands/
@@ -22,23 +35,24 @@ MyDJProdj/
     │   └── templates/
     │            main/
     │               └── blocks/
-    │                   ├── detail.html
-    │                   ├── footer.html
-    │                   ├── header.html
-    │                   └── list.html
-    │                 ├── about.html
-    │                 ├── add_book.html
-    │                 ├── article_delete_confirm.html
-    │                 ├── article_detail.html
-    │                 ├── article_form.html
-    │                 ├── article_list.html
-    │                 ├── article_preview.html
-    │                 ├── articles.html
-    │                 ├── book_detail.html
-    │                 ├── book_list.html
-    │                 ├── contacts.html
-    │                 ├── index.html
-    │                 └── neo.html  
+    │                       ├── detail.html
+    │                       ├── footer.html
+    │                       ├── header.html
+    │                       └── list.html
+    │                 
+    │              └── about.html    │                   
+    │              ├── add_book.html
+    │              ├── article_delete_confirm.html
+    │              ├── article_detail.html
+    │              ├── article_form.html
+    │              ├── article_list.html
+    │              ├── article_preview.html
+    │              ├── articles.html
+    │              ├── book_detail.html
+    │              ├── book_list.html
+    │              ├── contacts.html
+    │              ├── index.html
+    │              └── neo.html  
     │   ├── __init__.py 
     │   ├── admin.py              # кастомная админка (BackupAdminSite)
     │   ├── apps.py               # регистрация моделей в кастомной админке
@@ -60,8 +74,8 @@ MyDJProdj/
     │       ├── settings.py                 
     │       ├── settings_local.py
     │       ├── urls.py
-    │       └── wsgi.py) 
-    │
+    │       └── wsgi.py)    │
+    │ 
     ├── news/
     │     └── migrations/
     │     └── templates/
@@ -82,6 +96,7 @@ MyDJProdj/
     │       ├── tests.py
     │       ├── urls.py
     │       └── views.py
+    
     │
     ├── screenshots/
     │      
@@ -90,7 +105,24 @@ MyDJProdj/
     │              └── index.htm 
     │               
     ├── venv/
-    │   
+    │
+    ├── weather/
+    │     └── migrations/
+    │     └── static/
+    │            └── weather/
+    │                  └── icons/ 
+    │     └── templates/
+    │            └── weather 
+    │                  └── weather.html    │               
+    │      └──__init__.py
+    │      ├── admin.py
+    │      ├── apps.py     
+    │      ├── context_processors.py
+    │      ├── models.py
+    │      ├── tests.py
+    │      ├── urls.py
+    │      ├── utils.py
+    │      └── views.py   
     ├── .env
     ├── .env.example
     ├── db.sqlite3
@@ -98,6 +130,6 @@ MyDJProdj/
     ├── READMEru.md
     ├── READMEen.md
     ├── requirements.txt
-    ├── run_django.bat
-    └── stop_django.bat
+    ├── run_all.bat
+    └── stop_all.bat
 ```

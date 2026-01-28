@@ -1,9 +1,24 @@
- <!---footer.html--->
+<!---footer.html--->
 <footer class="text-light text-center py-4 mt-5" style="background: #3b5d7a;">
     <p class="mb-1">© 2026 MyDJProdj</p>
     <div>
-        <a href="#" class="text-light me-3">WatsApp</a>
-        <a href="#" class="text-light me-3">Telegram</a>
-        <a href="#" class="text-light">E-mail</a>
+        <a href="#" class="text-light me-3">
+            <i class="bi bi-whatsapp"></i> WhatsApp
+        </a>
+        <a href="#" class="text-light me-3">
+            <i class="bi bi-telegram"></i> Telegram
+        </a>
+        <a href="#" class="text-light">
+            <i class="bi bi-envelope"></i> E‑mail
+        </a>
     </div>
+
+    {% if footer_weather %}
+    <div class="text-center mt-3">
+        <i class="bi bi-thermometer-half"></i>
+        {{ footer_weather.temp }}°C
+        <img src="https://openweathermap.org/img/wn/{{ footer_weather.icon }}.png" alt="">
+        <span class="text-muted">{{ footer_weather.desc }}</span>
+    </div>
+    {% endif %}
 </footer>
