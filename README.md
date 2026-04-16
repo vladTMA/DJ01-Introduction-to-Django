@@ -1,3 +1,5 @@
+![Banner](https://img.shields.io/badge/MyDJProdj-Django%20%2B%20Telegram%20Bot-0C4B33?style=for-the-badge&logo=python&logoColor=white)
+
 # MyDJProdj — Django Project / Django Проект 
 
 Учебный Django‑проект, включающий новости, книги, статьи, загрузку изображений, кастомную регистрацию пользователей, расширенную админ‑панель и полноценную интеграцию с Telegram‑ботом через REST API.
@@ -17,20 +19,25 @@ Educational Django project featuring news, books, articles, image uploads, custo
 | ![](MyDJProdj/screenshots/homedj.png) | ![](MyDJProdj/screenshots/news.png) | ![](MyDJProdj/screenshots/books.png) | ![](MyDJProdj/screenshots/neo.png) |
 
 ### Custom registration & Adin panel / Кастомная регистрация и админ-панель
-| Custom Registration                            | Custom Admin (Backup DB) |
-|------------------------------------------------|--------------------------|
-| ![](MyDJProdj/screenshots/castom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
+| Custom Registration                  | Custom Admin (Backup DB) |
+|--------------------------------------|--------------------------|
+| ![](MyDJProdj/screenshots/custom_register.png) | ![](MyDJProdj/screenshots/custom_admin_backup.png) |
 
+## 🌤 Weather Page (Screenshots) / Погода (скриншоты)
+| Weather (City Input)                | Weather (Result)                                 |
+|-------------------------------------|--------------------------------------------------|
+| ![](MyDJProdj/screenshots/weather_Alagir.png) | ![](MyDJProdj/screenshots/weather_Hong_Kong.png) |
 ---
 
 ## 🧱 Project Structure / Структура проекта
-
 Полная структура проекта вынесена в отдельный файл:
 
 ➡️ [ARCHITECTURE.md](ARCHITECTURE.md)
 
 ---
 ## 🚀 Features / Функции
+
+## Django
 
 - Новости, книги, статьи
 - Загрузка изображений
@@ -42,15 +49,16 @@ Educational Django project featuring news, books, articles, image uploads, custo
 - Адаптивный интерфейс на Bootstrap
 - Работа с .env
 - Чистая и расширяемая архитектура проекта
+- Страница погоды /weather/ (OpenWeatherMap API)
 
----
 ---
 
 ## Telegram Bot
 
 - Автоматическая регистрация пользователя
 - Команда /myinfo — получение профиля из Django
-- Интеграция с OpenWeatherMap
+- Команда /weather — погода в Пскове
+- Команда /погода <город> — погода по названию города
 - Авторассылка погоды
 - Inline‑кнопки и интерактивное меню
 - Полная синхронизация данных с Django
@@ -59,11 +67,13 @@ Educational Django project featuring news, books, articles, image uploads, custo
 
 ## 🔗 REST API для бота
 
-- Бот взаимодействует с Django через защищённый API:
-POST /api/v1/register/ — регистрация пользователя
-GET /api/v1/user/<telegram_id>/ — получение профиля
+Бот взаимодействует с Django через защищённый API:
+- POST /api/v1/register/ — регистрация пользователя
+- GET /api/v1/user/<telegram_id>/ — получение профиля
 
-Все запросы защищены заголовком X-BOT-SECRET
+Все запросы защищены заголовком: 
+
+X-BOT-SECRET: <секретный ключ>
 
 ---
 
@@ -80,25 +90,27 @@ GET /api/v1/user/<telegram_id>/ — получение профиля
 
 ---
 
-## 🛡 Безопасность
+## 🛡 Security / Безопасность
 
 - доступ к API только через секретный ключ
 - сериализатор ограничивает доступные поля
 - админ‑панель позволяет управлять пользователями бота
+- рекомендуется HTTPS в продакшене
 
 --- 
 
-## 🤖 Функции бота
+## 🤖 Bot Features / Функции бота
 
 - /start — регистрация и вывод профиля
 - /myinfo — получение данных из Django
+- /weather — погода в Пскове
+- /погода <город> — погода по названию города
 - авторассылка погоды
-- выбор города
 - inline‑кнопки
 
 ---
 
-## 🧩 Единая архитектура
+## 🧩 Unified Architecture / Единая архитектура
 
 - Django хранит данные
 - бот — интерфейс для пользователя
@@ -116,18 +128,30 @@ GET /api/v1/user/<telegram_id>/ — получение профиля
 
 ```
 {
+  "telegram_id": <int>,
+  "username": <string | null>,
+  "first_name": <string>,
+  "last_name": <string>,
+  "language_code": <string>,
+  "latitude": <float | null>,
+  "longitude": <float | null>
+}
+```
+---
+
+## Example request
+
+```
+{
   "telegram_id": 123456,
   "username": "vivaldy",
-  "first_name": "Vladimir",
-  "last_name": "Trofimov",
+  "first_name": "Ilia",
+  "last_name": "Voronov",
   "language_code": "ru",
   "latitude": null,
   "longitude": null
 }
 ```
----
-
-## Response
 
 ```
 {
@@ -137,7 +161,7 @@ GET /api/v1/user/<telegram_id>/ — получение профиля
     "telegram_id": 123456,
     "username": "vivaldy",
     "first_name": "Vladimir",
-    "last_name": "Trofimov",
+    "last_name": "Filonoff",
     "language_code": "ru",
     "registered_at": "...",
     "last_activity": "...",
@@ -147,16 +171,21 @@ GET /api/v1/user/<telegram_id>/ — получение профиля
 ```
 ---
 
-## GET /api/v1/user/<telegram_id>/
+#### GET /api/v1/user/<telegram_id>/
+
+Возвращает профиль пользователя.
+
+Пример ответа
 
 ```
 {
   "status": "ok",
+  "created": true,
   "user": {
     "telegram_id": 123456,
     "username": "vivaldy",
-    "first_name": "Vladimir",
-    "last_name": "Trofimov",
+    "first_name": "Ilia",
+    "last_name": "Voronov",
     "language_code": "ru",
     "registered_at": "...",
     "last_activity": "...",
@@ -173,6 +202,19 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
+```
+
+### 🖥 Windows: `.bat` scripts / Скрипты `.bat`
+
+✔ *run_all.bat* — единое окно + логи в файлы
+
+- Django запускается на порту 8001
+- Telegram‑бот запускается в фоне
+- Логи пишутся в:
+
+```
+logs/django.log
+logs/bot.log
 ```
 ---
 
