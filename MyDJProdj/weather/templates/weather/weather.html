@@ -123,8 +123,9 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        const lat = parseFloat("{{ lat }}");
-        const lon = parseFloat("{{ lon }}");
+        /* stringformat даёт десятичную точку независимо от ru-локали (иначе parseFloat обрежет число по запятой). */
+        const lat = parseFloat("{{ lat|stringformat:".7f" }}");
+        const lon = parseFloat("{{ lon|stringformat:".7f" }}");
 
         const map = L.map("map").setView([lat, lon], 10);
 
@@ -133,8 +134,12 @@
             }).addTo(map);
 
         L.marker([lat, lon]).addTo(map)
-            .bindPopup("{{ city }}")
+            .bindPopup("{{ city|escapejs }}")
             .openPopup();
+
+        map.whenReady(function () {
+            map.invalidateSize();
+        });
     </script>{% endif %}
  </div>
 {% endblock %}

@@ -75,6 +75,15 @@ nav a.active {
     border-radius: 8px;
 }
 
+/* Bootstrap задаёт img { max-width: 100% }, из‑за этого тайлы Leaflet сжимаются
+   и карта визуально не совпадает с координатами маркера. */
+.leaflet-container img.leaflet-tile,
+.leaflet-container img.leaflet-marker-icon,
+.leaflet-container img.leaflet-marker-shadow,
+.leaflet-container .leaflet-pane > svg {
+    max-width: none !important;
+}
+
 
 
 

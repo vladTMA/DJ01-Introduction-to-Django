@@ -21,10 +21,16 @@ An educational Django project featuring news, books, articles, image uploads, cu
 |------|------|-------|-----|
 | ![](screenshots/homedj.png) | ![](screenshots/news.png) | ![](screenshots/books.png) | ![](screenshots/neo.png) |
 
-### Custom registration & Adin panel
-| Custom Registration                            | Custom Admin (Backup DB) |
-|------------------------------------------------|--------------------------|
-| ![](screenshots/castom_register.png) | ![](screenshots/custom_admin_backup.png) |
+### Custom Registration & Admin Panel
+| Custom Registration                  | Custom Admin (Backup DB) |
+|--------------------------------------|--------------------------|
+| ![](screenshots/custom_register.png) | ![](screenshots/custom_admin_backup.png) |
+
+## 🌤 Weather Page (Screenshots)
+| Weather (City Input)                    | Weather (Result)              |
+|-------------------------------------|----------------------------------------|
+| ![](screenshots/weather_Alagir.png) | ![](screenshots/weather_Hong_Kong.png) |
+
 ---
 
 ## 🚀 Features
@@ -53,29 +59,33 @@ An educational Django project featuring news, books, articles, image uploads, cu
 - `/news/<id>/` — News detail
 - Bootstrap cards
 - “Read more”
-- Auto‑assigned author
+- Automatically assigned author
 
 ### Books
-- `/books/` — list of books
+- `/books/` — List of books
 - `/books/<id>/` — detailed book page
 - Covers, description, reviews
 - Cards with a "Learn more" button
 
 ### Users 
 
-- Custom user registration
+- Custom registration
 - Custom form and validation
 - Extended authentication flow
 
-### 🌤 Weather Page
+#### 🌤 Weather Page
 
 The Weather module provides:
 
-- weather search by city name
-- temperature, humidity, wind speed, dew point
-- Bootstrap‑based UI
-- error handling for invalid cities
-- integration with the Telegram bot
+- Weather search by city name
+- City map
+- Display of temperature, humidity, and wind speed
+- Sunrise and sunset times (local, Moscow, and UTC)
+- Daylight duration
+- City elevation above sea level
+- Bootstrap cards
+- API error handling
+- Integration with a Telegram bot
 
 ---
 
@@ -101,8 +111,7 @@ X-BOT-SECRET: <secret key>
 
 Stores:
 
-Telegram ID
-
+- Telegram ID
 - username, first name, last name
 - language code
 - registration date
@@ -116,8 +125,8 @@ Telegram ID
 - /myinfo — fetch profile from Django
 - /weather — weather in Pskov
 - /weather <city> — weather by city name
-- automatic weather notifications (morning & evening)
-- inline buttons:
+- Automatic weather notifications (morning and evening)
+- Inline buttons:
     - Weather in Pskov
     - Choose city
     - Help
@@ -134,39 +143,33 @@ Telegram ID
 ## 📡 API Reference
 
 ### POST /api/v1/register/
-
 Registers a Telegram user.
 
+#### Request Schema
+
+```
+{
+  "telegram_id": <int>,
+  "username": <string | null>,
+  "first_name": <string>,
+  "last_name": <string>,
+  "language_code": <string>,
+  "latitude": <float | null>,
+  "longitude": <float | null>
+}
+```
 #### Request example
 
 ```
 {
   "telegram_id": 123456,
   "username": "vivaldy",
-  "first_name": "Vladimir",
-  "last_name": "Trofimov",
-  "language_code": "en",
+  "first_name": "Ilia",
+  "last_name": "Voronoff",
+  "language_code": "ru",
   "latitude": null,
   "longitude": null
-}
-```
-#### Response example
-
-```
-{
-  "status": "ok",
-  "created": true,
-  "user": {
-    "telegram_id": 123456,
-    "username": "vivaldy",
-    "first_name": "Vladimir",
-    "last_name": "Trofimov",
-    "language_code": "en",
-    "registered_at": "...",
-    "last_activity": "...",
-    "is_subscribed": true
   }
-}
 ```
 ---
 
@@ -182,8 +185,8 @@ Returns a Telegram user profile.
   "user": {
     "telegram_id": 123456,
     "username": "vivaldy",
-    "first_name": "Vladimir",
-    "last_name": "Trofimov",
+    "first_name": "Ilia",
+    "last_name": "Voronoff",
     "language_code": "en",
     "registered_at": "...",
     "last_activity": "...",
@@ -201,70 +204,71 @@ The full project structure is available in a separate file:
 
 ---
 
-### ▶️ Running the project
+### ⚙️ Installation
 
-## 1. Using the script
+``` bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver 8001
 
 ```
-run_django.bat
+
+### 🖥 Windows: `.bat` scripts
+
+✔ *run_all.bat* — One-step launch
+
+- Django runs on port 8001
+- The Telegram bot runs in the background
+- Logs are written to:
 ```
-The script automatically:
+logs/django.log
+logs/bot.log
+```
+---
 
-- navigates to the project directory
-- activates the virtual environment
-- starts the development server
-
-## 2. Manual run
+### 2. Manual Launch
 
 ```
 cd MyDJProdj
 venv\Scripts\activate
-python manage.py runserver
+python manage.py runserver 8001
 ```
+---
+
+## ⏹ Safe Shutdown + Process Uptime (stop_all.bat)
+
+- Stops Django on port 8001
+- Stops the bot (identified by the name `bot_main.py`)
+- Displays the uptime for each process
+- Operates using UTF-8 encoding (stop_all.bat)
 
 ---
 
-### ⏹ Stopping the server
+## 🛠 Technologies Used
 
-```
-stop_django.bat
-```
-The script:
-
-- finds Django processes
-- terminates them
-- prints status
-- works in UTF‑8
----
-
-The run_all.bat and stop_all.bat scripts are displayed on the neo page.
+- Python 3.11
+- Django 5.2
+- Bootstrap 5
+- Prism.js (code highlighting)
+- HTML + CSS
 
 ---
 
-### 🛠 Technologies
+## 📌 Development Roadmap
 
-Python 3.11
-Django 5.2
-Bootstrap 5
-Prism.js
-HTML + CSS
-
----
-
-### 📌 Roadmap
-
-- Pagination
+- News pagination
+- Images for news articles
 - News categories
-- Images for news
 - Contact form
-- Improved admin UI
+- Admin interface design improvements
 
 ---
 
-### 📄 License                                
+## 📄 License
 
-MIT License
-Educational use only.
+License: MIT
 
 ---
 
