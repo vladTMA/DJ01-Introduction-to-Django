@@ -139,7 +139,7 @@ X-BOT-SECRET: <секретный ключ>
 ```
 ---
 
-## Example request/ Пример запроса
+## Example request (JSON)/ Пример запроса
 
 ```
 {
@@ -152,7 +152,7 @@ X-BOT-SECRET: <секретный ключ>
   "longitude": null
 }
 ```
-## Example answer/ Пример ответа
+## Example answer (text)/ Пример ответа
 ```
 {
   "status": "ok",
