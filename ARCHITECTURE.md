@@ -7,6 +7,8 @@
 ```text
 DJ01-Introduction-to-Django/          ← корень репозитория (git)
 │
+├── .gitattributes
+├── .gitignore
 ├── ARCHITECTURE.md
 ├── CHANGELOG.md
 ├── LICENSE
