@@ -2,134 +2,120 @@
 
 Полная структура проекта с кастомной админкой, пользовательской регистрацией, модулями контента и расширенной логикой.
 
-## 🧱 Project Architecture
+## 🧱 Дерево каталогов (сокращённо)
 
 ```text
-MyDJProdj/
+DJ01-Introduction-to-Django/          ← корень репозитория (git)
+│
 ├── ARCHITECTURE.md
-├── bot_main.py
+├── CHANGELOG.md
 ├── LICENSE
-└── README.md
+├── README.md
+│
+└── MyDJProdj/                        ← рабочая папка Django-проекта (manage.py)
     │
-    ├── MyDJProdj/
-    │   ├── backups/
-    │   ├── migrations/    
-    │   ├── bot/   
-    │   ├── __init__.py                     
-    │   ├── admin.py
-    │   ├── apps.py                 
-    │   ├── models.py
-    │   ├── serializers.py
-    │   ├── tests.py
-    │   ├── urls.py
-    │   └── views.py)                        
-    │       
-    ├── main/
-    │   └── management/
-    │           └── commands/
-    │                 └── backupdb.py
-    │   └── migrations/ 
-    │   └── static/
-    │           └── main/ 
-    │                └── style.css
-    │   └── templates/
-    │            main/
-    │               └── blocks/
-    │                       ├── detail.html
-    │                       ├── footer.html
-    │                       ├── header.html
-    │                       └── list.html
-    │                 
-    │              └── about.html    │                   
-    │              ├── add_book.html
-    │              ├── article_delete_confirm.html
-    │              ├── article_detail.html
-    │              ├── article_form.html
-    │              ├── article_list.html
-    │              ├── article_preview.html
-    │              ├── articles.html
-    │              ├── book_detail.html
-    │              ├── book_list.html
-    │              ├── contacts.html
-    │              ├── index.html
-    │              └── neo.html  
-    │   ├── __init__.py 
-    │   ├── admin.py              # кастомная админка (BackupAdminSite)
-    │   ├── apps.py               # регистрация моделей в кастомной админке
-    │   ├── forms.py              # кастомная регистрация пользователя
+    ├── MyDJProdj/                    ← пакет конфигурации (settings, urls, wsgi, asgi)
+    │   ├── __init__.py
+    │   ├── asgi.py
+    │   ├── settings.py
+    │   ├── settings_local.py         ← опциональные локальные переопределения
+    │   ├── urls.py                   ← корневой URLconf: admin, main, news, api
+    │   └── wsgi.py
+    │
+    ├── main/                         ← основное приложение: страницы, статьи, книги, neo
+    │   ├── management/commands/
+    │   │   └── backupdb.py           ← кастомная команда бэкапа БД
+    │   ├── migrations/
+    │   ├── static/main/
+    │   │   └── style.css
     │   ├── templates/
-    │   │   ├── admin/            # переопределённые шаблоны админки
-    │   │   └── registration/     # кастомная форма регистрации│   
+    │   │   ├── base.html
+    │   │   ├── login.html
+    │   │   ├── register.html
+    │   │   └── main/                 ← шаблоны приложения main
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── forms.py
     │   ├── models.py
     │   ├── urls.py
     │   ├── utils.py
     │   └── views.py
     │
-    ├── media/
-    │           └── books/
+    ├── bot/                          ← REST API для Telegram-бота
+    │   ├── migrations/
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── models.py                 ← TelegramUser и др.
+    │   ├── serializers.py
+    │   ├── urls.py
+    │   └── views.py
     │
-    ├── MyDJProdj/
-    │       ├── __init__.py                
-    │       ├── asgi.py
-    │       ├── settings.py                 
-    │       ├── settings_local.py
-    │       ├── urls.py
-    │       └── wsgi.py)    │
-    │ 
     ├── news/
-    │     └── migrations/
-    │     └── templates/
-    │            └── admin 
-    │                  └── news
-    │                       └── news 
-    │                            └── change_list.html 
-    │               └── news/  
-    │                     └── templates/ 
-    │                     ├── detail.html
-    │                     ├── home.html                     
-    │                     └── news.html 
-    │               └── home.html 
-    │       ├── __init__.py
-    │       ├── admin.py              # NewsAdmin без регистрации (регистрация в apps.py)
-    │       ├── apps.py
-    │       ├── models.py
-    │       ├── tests.py
-    │       ├── urls.py
-    │       └── views.py
-    
+    │   ├── migrations/
+    │   ├── templates/
+    │   │   ├── home.html
+    │   │   ├── admin/news/news/change_list.html
+    │   │   └── news/
+    │   │       ├── detail.html
+    │   │       ├── home.html
+    │   │       └── news.html
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── models.py
+    │   ├── tests.py
+    │   ├── urls.py
+    │   └── views.py
     │
-    ├── screenshots/
-    │      
-    ├── templates/ 
-    │       └── admin/
-    │              └── index.htm 
-    │               
-    ├── venv/
+    ├── weather/                      ← погода (OpenWeatherMap, шаблон с картой)
+    │   ├── migrations/
+    │   ├── templates/weather/
+    │   │   └── weather.html
+    │   ├── context_processors.py     ← данные для подвала (footer)
+    │   ├── apps.py
+    │   ├── models.py
+    │   ├── urls.py
+    │   ├── utils.py
+    │   └── views.py
     │
-    ├── weather/
-    │     └── migrations/
-    │     └── static/
-    │            └── weather/
-    │                  └── icons/ 
-    │     └── templates/
-    │            └── weather 
-    │                  └── weather.html    │               
-    │      └──__init__.py
-    │      ├── admin.py
-    │      ├── apps.py     
-    │      ├── context_processors.py
-    │      ├── models.py
-    │      ├── tests.py
-    │      ├── urls.py
-    │      ├── utils.py
-    │      └── views.py   
-    ├── .env
-    ├── .env.example
+    ├── templates/admin/
+    │   └── index.html                ← переопределение главной страницы админки
+    │
+    ├── backups/                      ← файлы *.sqlite3 от backupdb (в git могут не попадать)
+    ├── media/books/                  ← загрузки обложек книг
+    ├── screenshots/                  ← скриншоты для README
+    │
+    ├── .env                          ← секреты (локально; часто в .gitignore)
+    ├── .env.example / EnvExample     ← шаблон переменных для копирования в .env
+    ├── bot_main.py                   ← точка входа Telegram-бота (отдельный процесс)
     ├── db.sqlite3
     ├── manage.py
+    ├── requirements.txt
     ├── READMEru.md
     ├── READMEen.md
-    ├── requirements.txt
     ├── run_all.bat
     └── stop_all.bat
 ```
+
+## 💬 Комментарии к ключевым файлам
+
+| Путь | Назначение |
+|------|------------|
+| **`MyDJProdj/manage.py`** | Стандартная точка входа Django: `runserver`, `migrate`, `shell` и т.д. |
+| **`MyDJProdj/MyDJProdj/settings.py`** | Глобальные настройки: `INSTALLED_APPS`, БД, `load_dotenv()`, ключи API (`WEATHER_API_KEY`), `REST_FRAMEWORK`, CORS. |
+| **`MyDJProdj/MyDJProdj/urls.py`** | Корневые маршруты: кастомная админка (`main.admin`), включение **`main.urls`**, префикс **`news/`**, API **`api/`** → `bot.urls`. Медиа в `DEBUG`. |
+| **`MyDJProdj/main/urls.py`** | Публичные страницы: главная, регистрация/логин, статьи, книги, **`weather/`** (include `weather.urls`), **`neo/`**. |
+| **`MyDJProdj/main/views.py`** | Представления главной части сайта, страница NEO (просмотр кода), статьи и книги. |
+| **`MyDJProdj/main/models.py`** | Кастомный пользователь, статьи, книги и связанные модели. |
+| **`MyDJProdj/main/admin.py`** | Регистрация моделей и **`BackupAdminSite`** (кастомная админка). |
+| **`MyDJProdj/bot/urls.py`**, **`views.py`**, **`serializers.py`** | REST API бота: регистрация пользователя, профиль; защита через `X-BOT-SECRET`. |
+| **`MyDJProdj/bot/models.py`** | Модель **`TelegramUser`** (telegram_id, подписка, геоданные и т.д.). |
+| **`MyDJProdj/bot_main.py`** | Запуск aiogram/long polling; обращается к Django по HTTP, не через `manage.py`. |
+| **`MyDJProdj/weather/views.py`** | Запросы к OpenWeatherMap, контекст для шаблона погоды и карты. |
+| **`MyDJProdj/weather/context_processors.py`** | Краткие данные погоды для общего шаблона (например, подвал). |
+| **`MyDJProdj/templates/admin/index.html`** | Кастомная разметка главной страницы админки. |
+| **`MyDJProdj/main/management/commands/backupdb.py`** | Команда резервного копирования SQLite в **`backups/`**. |
+| **`MyDJProdj/run_all.bat`** / **`stop_all.bat`** | Запуск Django (порт 8001) и бота в одном окне; остановка процессов по командной строке. Подробнее в **READMEru.md** / **READMEen.md**. |
+
+---
+
+
