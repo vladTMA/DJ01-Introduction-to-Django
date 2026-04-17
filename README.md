@@ -124,7 +124,7 @@ X-BOT-SECRET: <секретный ключ>
 
 Регистрирует пользователя Telegram.
 
-## Request (JSON)
+## Request (JSON)/ Схема запроса
 
 ```
 {
@@ -139,7 +139,7 @@ X-BOT-SECRET: <секретный ключ>
 ```
 ---
 
-## Example request
+## Example request/ Пример запроса
 
 ```
 {
@@ -152,7 +152,7 @@ X-BOT-SECRET: <секретный ключ>
   "longitude": null
 }
 ```
-
+## Example answer/ Пример ответа
 ```
 {
   "status": "ok",
