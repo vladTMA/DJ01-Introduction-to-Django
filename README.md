@@ -139,14 +139,14 @@ X-BOT-SECRET: <секретный ключ>
 ```
 ---
 
-## Example request (JSON)/ Пример запроса
+## Example request/ Пример запроса
 
 ```
 {
   "telegram_id": 123456,
   "username": "vivaldy",
-  "first_name": "Ilia",
-  "last_name": "Voronov",
+  "first_name": "Vladimir",
+  "last_name": "Filonoff",
   "language_code": "ru",
   "latitude": null,
   "longitude": null
@@ -175,7 +175,7 @@ X-BOT-SECRET: <секретный ключ>
 
 Возвращает профиль пользователя.
 
-Пример ответа
+## Example answer (text)/ Пример ответа
 
 ```
 {
@@ -184,8 +184,8 @@ X-BOT-SECRET: <секретный ключ>
   "user": {
     "telegram_id": 123456,
     "username": "vivaldy",
-    "first_name": "Ilia",
-    "last_name": "Voronov",
+    "first_name": "Vladimir",
+    "last_name": "Filonoff",
     "language_code": "ru",
     "registered_at": "...",
     "last_activity": "...",
