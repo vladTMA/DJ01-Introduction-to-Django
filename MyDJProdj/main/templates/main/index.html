@@ -1,9 +1,42 @@
-<!--index.html-->
-{% extends "base.html" %}
+<!--main/index.html-->
+{{% extends "base.html" %}
 
 {% block title %}Главная{% endblock %}
 
 {% block content %}
 <h1>Мой первый проект на Django</h1>
 <p>Добро пожаловать!</p>
+
+<h2 class="mb-4 mt-5">Последние новости</h2>
+
+{% if latest_news %}
+<h2 class="mb-4 mt-5">Последние новости</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for item in latest_news %}
+    <div class="col d-flex">
+        <div class="card h-100 w-100 d-flex flex-column">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ item.title }}</h5>
+
+                <p class="card-text flex-grow-1">
+                    {{ item.short_description }}
+                </p>
+
+                <p class="text-muted">Автор: {{ item.author }}</p>
+
+                <a href="{% url 'news_detail' item.pk %}" class="btn btn-primary mt-auto">
+                    Читать далее
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% else %}
+    <p>Новостей пока нет.</p>
+{% endif %}
+
 {% endblock %}
+

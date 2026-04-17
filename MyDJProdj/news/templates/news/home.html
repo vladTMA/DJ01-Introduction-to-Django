@@ -1,0 +1,18 @@
+<!---news/home.html--->
+{% extends "base.html" %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<h1>Новости</h1>
+
+{% for item in news %}
+    <div class="mb-4">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.short_description }}</p>
+        <small class="text-muted">{{ item.created_at|date:"d.m.Y H:i" }}</small>
+    </div>
+{% empty %}
+    <p>Новостей пока нет.</p>
+{% endfor %}
+{% endblock %}

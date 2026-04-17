@@ -1,12 +1,47 @@
-<nav>
-    <a href="/">Главная</a>
-    <a href="/neo/">NEO</a>
-    <a href="/about/">О проекте</a>
-    <a href="/contacts/">Контакты</a>
+<!-- main/templates/main/blocks/header.html -->
+<nav class="navbar navbar-expand-lg" style="background: #3b5d7a;">
+    <div class="container">
+
+        <a class="navbar-brand text-light" href="/">MyDJProdj</a>
+
+        <!-- Кнопка для мобильного меню -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+
+            <!-- Левое меню -->
+            <div class="navbar-nav me-auto">
+                <a class="nav-link text-light" href="{% url 'index' %}">Главная</a>
+                <a class="nav-link text-light" href="{% url 'neo' %}">NEO</a>
+                <a class="nav-link text-light" href="{% url 'about' %}">О проекте</a>
+                <a class="nav-link text-light" href="{% url 'contacts' %}">Контакты</a>
+                <a class="nav-link text-light" href="{% url 'news' %}">Страница новостей</a>
+                <a class="nav-link text-light" href="{% url 'book_list' %}">Книги</a>
+                <a class="nav-link text-light" href="{% url 'add_article' %}">Добавить статью</a>
+                <a class="nav-link text-light" href="{% url 'add_book' %}">Добавить книгу</a>
+                <a class="nav-link text-light" href="{% url 'weather' %}">Погода</a>
+            </div>
+
+            <!-- Правый блок: вход / выход -->
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <span class="nav-link text-light">Привет, {{ user.username }}!</span>
+                   <form method="post" action="{% url 'logout' %}" class="d-inline">
+                       {% csrf_token %}
+                       <button type="submit"
+                               class="nav-link btn btn-link text-light p-0 m-0"
+                               style="font-weight: bold;">
+                           Выход
+                       </button>
+                   </form>
+                {% else %}
+                    <a class="nav-link text-light" href="{% url 'login' %}">Вход</a>
+                    <a class="nav-link text-light" href="{% url 'register' %}">Регистрация</a>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
 </nav>
-
-<a href="/articles/" class="{% if '/articles/' in request.path %}active{% endif %}">
-    Блог
-</a>
-
-

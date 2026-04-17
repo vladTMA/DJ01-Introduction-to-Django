@@ -1,0 +1,11 @@
+### ⏹ Stopping (stop_all.bat)
+
+Path: MyDJProdj/stop_all.bat. Run it **on its own** when you want to stop both the server and the bot.
+
+It is **not** called from 
+un_all.bat. It runs PowerShell and stops python.exe processes whose command line matches **manage.py … 
+unserver** or **ot_main.py**. If you have other projects running with the same arguments, they may be stopped as well.
+
+The contents of 
+un_all.bat and stop_all.bat are also shown on the **NEO** page (/neo/).
+
